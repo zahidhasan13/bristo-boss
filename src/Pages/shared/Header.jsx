@@ -5,7 +5,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header>
-      <nav className="bg-[rgba(0,0,0,0.3)] border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 fixed top-0 left-0 right-0 z-40">
+      <nav className="md:bg-[rgba(0,0,0,0.3)] bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 md:fixed top-0 left-0 right-0 z-40">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/">
             <span className="text-3xl uppercase font-bold text-white">

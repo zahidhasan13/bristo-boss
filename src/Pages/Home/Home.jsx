@@ -1,5 +1,6 @@
 import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner/Banner";
+import Category from "./Category/Category";
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             subHeading="---From 11:00am to 10:00pm---"
             heading="ORDER ONLINE"
             ></SectionTitle>
+            <Category></Category>
         </div>
     );
 };
