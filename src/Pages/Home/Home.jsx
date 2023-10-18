@@ -1,16 +1,17 @@
-import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner/Banner";
+import CallUs from "./CallUs/CallUs";
 import Category from "./Category/Category";
+import CoverBG from "./CoverBG/CoverBG";
+import Menu from "./Menu/Menu";
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <SectionTitle
-            subHeading="---From 11:00am to 10:00pm---"
-            heading="ORDER ONLINE"
-            ></SectionTitle>
             <Category></Category>
+            <CoverBG></CoverBG>
+            <Menu></Menu>
+            <CallUs></CallUs>
         </div>
     );
 };
