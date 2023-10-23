@@ -19,18 +19,22 @@ const ChefRecomands = () => {
         heading="CHEF RECOMMENDS"
       ></SectionTitle>
 
-      <div className="grid grid-cols-3 gap-4 my-8">
+      <div className="grid md:grid-cols-3 grid-cols-1 md:gap-4 my-8 mx-4 md:mx-0">
         {chefRec.slice(3, 6).map((item) => (
-          <div key={item._id} className="bg-[#F3F3F3] pb-4">
-            <img src={item.image} alt="" className="w-[400px]"/>
-            <div className="text-center mx-14 my-4">
-            <h3 className="text-2xl font-semibold">{item.name}</h3>
-            <p>{item.recipe}</p>
-            </div>
-            <div className="text-center">
-              <button className="btn btn-outline border-0 border-b-4 uppercase border-[#BB8506] text-[#BB8506] hover:text-[#BB8506]">
-                add to cart
-              </button>
+          <div key={item._id} className="card w-96 bg-base-100 shadow-xl mb-8">
+            <figure className="">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-[400px]"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{item.name}</h2>
+              <p>{item.recipe}</p>
+              <div className="card-actions">
+              <button className="btn btn-outline border-0 border-b-4 uppercase border-[#BB8506] text-[#BB8506] hover:text-[#BB8506]">add to cart</button>
+              </div>
             </div>
           </div>
         ))}

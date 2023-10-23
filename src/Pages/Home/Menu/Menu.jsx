@@ -20,7 +20,7 @@ const Menu = () => {
             heading="FROM OUR MENU"
             ></SectionTitle>
             
-            <div className="grid grid-cols-2 gap-8 mt-8 mb-12">
+            <div className="grid md:grid-cols-2 grid-cols-1 md:gap-8 mt-8 mb-12 md:mx-0 mx-4">
                 {
                     menu.map(item => <MenuItem
                     key={item._id}
