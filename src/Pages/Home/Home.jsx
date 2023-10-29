@@ -6,20 +6,24 @@ import CoverBG from "./CoverBG/CoverBG";
 import Features from "./Features/Features";
 import Menu from "./Menu/Menu";
 import Tesimonial from "./Testimonial/Tesimonial";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
-    return (
-        <div>
-            <Banner></Banner>
-            <Category></Category>
-            <CoverBG></CoverBG>
-            <Menu></Menu>
-            <CallUs></CallUs>
-            <ChefRecomands></ChefRecomands>
-            <Features></Features>
-            <Tesimonial></Tesimonial>
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Bistro Boss | Home</title>
+      </Helmet>
+      <Banner></Banner>
+      <Category></Category>
+      <CoverBG></CoverBG>
+      <Menu></Menu>
+      <CallUs></CallUs>
+      <ChefRecomands></ChefRecomands>
+      <Features></Features>
+      <Tesimonial></Tesimonial>
+    </div>
+  );
 };
 
 export default Home;
