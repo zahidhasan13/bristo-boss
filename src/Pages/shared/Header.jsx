@@ -65,12 +65,12 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-xl text-white uppercase">
+                <NavLink to="/order/salad" className="text-xl text-white uppercase">
                   our shop
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-xl text-white uppercase">
+                <NavLink to="/login" className="text-xl text-white uppercase">
                   login
                 </NavLink>
               </li>
