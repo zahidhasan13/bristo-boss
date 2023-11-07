@@ -1,8 +1,19 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import profile from '../../assets/others/profile.png'
+import cart from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const{user, logOutUser} = useContext(AuthContext);
+
+  const handleLogOut=() => {
+    logOutUser()
+    .then(()=>{})
+    .catch(()=>{});
+  };
   return (
     <header>
       <nav className="md:bg-[rgba(0,0,0,0.3)] bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 md:fixed top-0 left-0 right-0 z-40">
@@ -64,16 +75,24 @@ const Header = () => {
                   our menu
                 </NavLink>
               </li>
-              <li>
+              <li className="flex items-center">
                 <NavLink to="/order/salad" className="text-xl text-white uppercase">
                   our shop
                 </NavLink>
+                <img src={cart} alt="" className="w-10"/>
               </li>
-              <li>
+              {
+                user ? <li className="flex items-center space-x-2">
+                <button onClick={handleLogOut} className="text-xl text-white uppercase">logout</button>
+                <img src={profile} alt="Profile" className="w-6"/>
+                </li> : <>
+                <li>
                 <NavLink to="/login" className="text-xl text-white uppercase">
                   login
                 </NavLink>
               </li>
+              </>
+              }
             </ul>
           </div>
         </div>
