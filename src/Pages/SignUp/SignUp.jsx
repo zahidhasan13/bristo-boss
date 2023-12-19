@@ -1,29 +1,57 @@
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
-  const {register,handleSubmit,formState: { errors },} = useForm();
-  const {createUser} = useContext(AuthContext)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-    .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-    })
-  }
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      updateUserProfile(data.name)
+        .then(() => {
+          const savedUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  icon: "success",
+                  title: "Success!",
+                  text: "Your account has been created.",
+                });
+                navigate("/login");
+              }
+            });
+        })
+        .catch((error) => console.log(error));
+    });
+  };
   return (
     <div className="signup">
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 shadow-2xl py-20 px-20 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 shadow-2xl py-12 px-20 items-center">
         <div className="mx-20">
-          <h3 className="text-4xl font-bold text-black mb-6 text-center">
-            Sign Up
-          </h3>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6 w-full" action="#">
+          <h3 className="text-4xl font-bold text-black text-center">Sign Up</h3>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full my-5">
             <div>
               <label
                 htmlFor="name"
@@ -40,7 +68,9 @@ const SignUp = () => {
                 placeholder="Your Name"
                 required=""
               />
-              {errors.name && <span className="text-red-600">Name is required</span>}
+              {errors.name && (
+                <span className="text-red-600">Name is required</span>
+              )}
             </div>
             <div>
               <label
@@ -58,7 +88,9 @@ const SignUp = () => {
                 placeholder="name@company.com"
                 required=""
               />
-              {errors.email && <span className="text-red-600">Email is required</span>}
+              {errors.email && (
+                <span className="text-red-600">Email is required</span>
+              )}
             </div>
             <div>
               <label
@@ -70,16 +102,37 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                {...register("password", { required: true, maxLength: 20, minLength:6, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/ })}
+                {...register("password", {
+                  required: true,
+                  maxLength: 20,
+                  minLength: 6,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 id="password"
                 placeholder="••••••••"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required=""
               />
-              {errors.password?.type === "required" && <span className="text-red-600">Password is required</span>}
-              {errors.password?.type === "minLemgth" && <span className="text-red-600">Password must be 6 characters</span>}
-              {errors.password?.type === "maxLemgth" && <span className="text-red-600">Password must be less than 20 characters</span>}
-              {errors.password?.type === "pattern" && <span className="text-red-600">Password must be have at least (A-Z) one uppercase, (a-z) one lowercase, (0-9) one number and (!@#$&*) one special character.</span>}
+              {errors.password?.type === "required" && (
+                <span className="text-red-600">Password is required</span>
+              )}
+              {errors.password?.type === "minLemgth" && (
+                <span className="text-red-600">
+                  Password must be 6 characters
+                </span>
+              )}
+              {errors.password?.type === "maxLemgth" && (
+                <span className="text-red-600">
+                  Password must be less than 20 characters
+                </span>
+              )}
+              {errors.password?.type === "pattern" && (
+                <span className="text-red-600">
+                  Password must be have at least (A-Z) one uppercase, (a-z) one
+                  lowercase, (0-9) one number and (!@#$&*) one special
+                  character.
+                </span>
+              )}
             </div>
             <button
               type="submit"
@@ -97,19 +150,9 @@ const SignUp = () => {
               </Link>
             </p>
           </form>
-          <div className="text-center space-y-4 mt-4 text-[#444444]">
+          <div className="text-center space-y-4 text-[#444444]">
             <p className="font-medium">Or sign up with</p>
-            <div className="flex justify-center items-center space-x-8 text-2xl">
-              <button>
-                <FaFacebook></FaFacebook>
-              </button>
-              <button>
-                <FaGoogle></FaGoogle>
-              </button>
-              <button>
-                <FaGithub></FaGithub>
-              </button>
-            </div>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
         <div className="mr-10">

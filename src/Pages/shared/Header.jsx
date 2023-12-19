@@ -1,18 +1,23 @@
 import { useContext } from "react";
 import { useState } from "react";
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import profile from '../../assets/others/profile.png'
-import cart from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
+import profile from "../../assets/others/profile.png";
+import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const{user, logOutUser} = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+  const [cart] = useCart();
+  const [isAdmin] = useAdmin();
+  // console.log(cart.length);
 
-  const handleLogOut=() => {
+  const handleLogOut = () => {
     logOutUser()
-    .then(()=>{})
-    .catch(()=>{});
+      .then(() => {})
+      .catch(() => {});
   };
   return (
     <header>
@@ -65,34 +70,64 @@ const Header = () => {
                   contact us
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/" className="text-xl text-white uppercase">
-                  dashboard
-                </NavLink>
-              </li>
+              {user && (
+                <li>
+                  <NavLink
+                    to={isAdmin ? "dashboard/adminhome" : "dashboard/userhome"}
+                    className="text-xl text-white uppercase"
+                  >
+                    dashboard
+                  </NavLink>
+                </li>
+              )}
               <li>
                 <NavLink to="/menu" className="text-xl text-white uppercase">
                   our menu
                 </NavLink>
               </li>
               <li className="flex items-center">
-                <NavLink to="/order/salad" className="text-xl text-white uppercase">
+                <NavLink
+                  to="/order/salad"
+                  className="text-xl text-white uppercase"
+                >
                   our shop
                 </NavLink>
-                <img src={cart} alt="" className="w-10"/>
               </li>
-              {
-                user ? <li className="flex items-center space-x-2">
-                <button onClick={handleLogOut} className="text-xl text-white uppercase">logout</button>
-                <img src={profile} alt="Profile" className="w-6"/>
-                </li> : <>
-                <li>
-                <NavLink to="/login" className="text-xl text-white uppercase">
-                  login
-                </NavLink>
-              </li>
-              </>
-              }
+              {!isAdmin && (
+                <li className="flex items-center">
+                  <NavLink
+                    to="/dashboard/mycart"
+                    className="text-xl text-white uppercase flex items-center relative"
+                  >
+                    <FaCartShopping></FaCartShopping>
+                    <span className="bg-[#D99904] text-sm p-1 rounded-full absolute -top-3 -right-4 w-6 h-6 flex items-center justify-center">
+                      {cart?.length || 0}
+                    </span>
+                  </NavLink>
+                </li>
+              )}
+              {user ? (
+                <li className="flex items-center space-x-2">
+                  <button
+                    onClick={handleLogOut}
+                    className="text-xl text-white uppercase"
+                  >
+                    logout
+                  </button>
+                  <img src={profile} alt="Profile" className="w-6" />
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className="text-xl text-white uppercase"
+                    >
+                      login
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

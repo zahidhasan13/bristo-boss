@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet-async";
+import Scroll from "../../components/Scroll";
 import Banner from "./Banner/Banner";
 import CallUs from "./CallUs/CallUs";
 import Category from "./Category/Category";
@@ -6,7 +8,6 @@ import CoverBG from "./CoverBG/CoverBG";
 import Features from "./Features/Features";
 import Menu from "./Menu/Menu";
 import Tesimonial from "./Testimonial/Tesimonial";
-import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Helmet>
         <title>Bistro Boss | Home</title>
       </Helmet>
+      <Scroll />
       <Banner></Banner>
       <Category></Category>
       <CoverBG></CoverBG>
