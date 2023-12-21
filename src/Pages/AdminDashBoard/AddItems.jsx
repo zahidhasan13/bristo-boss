@@ -32,7 +32,6 @@ const AddItems = () => {
             category,
             image: imgUrl,
           };
-          console.log(newItem);
           axiosSecure.post("/menu", newItem).then((data) => {
             if (data.data.insertedId) {
               reset();
