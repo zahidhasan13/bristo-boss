@@ -1,5 +1,5 @@
 const MyBooking = () => {
-  return <div>MyBooking</div>;
+  return <div>bookings</div>;
 };
 
 export default MyBooking;

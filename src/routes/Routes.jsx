@@ -20,6 +20,8 @@ import UserDashBoard from "../layout/UserDashBoard";
 import AdminRoute from "./AdminRoute";
 import PrivateRouter from "./PrivateRouter";
 import Payment from "../Pages/UserDashBoard/Payment";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import UpdateItem from "../Pages/AdminDashBoard/UpdateItem";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "order/:category",
         element: <OrderFood></OrderFood>,
+      },
+      {
+        path: "contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
@@ -73,6 +79,7 @@ const router = createBrowserRouter([
         element: <AddReview></AddReview>,
       },
       {
+        path: "mybooking",
         element: <MyBooking></MyBooking>,
       },
       {
@@ -88,6 +95,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItems></AddItems>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "updateitem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItem></UpdateItem>
           </AdminRoute>
         ),
       },

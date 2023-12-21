@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
+import moment from "moment";
 
 const CheckoutForm = ({ price, cart }) => {
   const stripe = useStripe();
@@ -68,7 +69,7 @@ const CheckoutForm = ({ price, cart }) => {
         transactionId: paymentIntent.id,
         price,
         quantity: cart.length,
-        date: new Date(),
+        date: moment().format("dddd, MMMM D, YYYY"),
         cartIds: cart.map((item) => item._id),
         menuItems: cart.map((item) => item.menuItemId),
         status: "pending",
