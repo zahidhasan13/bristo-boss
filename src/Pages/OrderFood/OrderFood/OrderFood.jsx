@@ -10,7 +10,7 @@ import useMenu from "../../../hooks/useMenu";
 import Cover from "../../shared/Cover";
 
 const OrderFood = () => {
-  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks", "offered"];
   const { category } = useParams();
   const intialIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(intialIndex);
@@ -20,6 +20,7 @@ const OrderFood = () => {
   const pizza = menu.filter((item) => item.category === "pizza");
   const salad = menu.filter((item) => item.category === "salad");
   const soup = menu.filter((item) => item.category === "soup");
+  const offered = menu.filter((item) => item.category === "offered");
   return (
     <div>
       <Helmet>
@@ -39,6 +40,7 @@ const OrderFood = () => {
             <Tab>SOUP</Tab>
             <Tab>DESSERT</Tab>
             <Tab>DRINKS</Tab>
+            <Tab>OFFERED</Tab>
           </TabList>
 
           <TabPanel>
@@ -72,6 +74,13 @@ const OrderFood = () => {
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-3 md: gap-4">
               {drinks.map((item) => (
+                <FoodCard key={item._id} item={item}></FoodCard>
+              ))}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 md:grid-cols-3 md: gap-4">
+              {offered.map((item) => (
                 <FoodCard key={item._id} item={item}></FoodCard>
               ))}
             </div>

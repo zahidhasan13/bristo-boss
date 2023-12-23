@@ -48,7 +48,7 @@ const FoodCard = ({ item }) => {
       <figure className="">
         <img src={image} alt={name} className="w-[400px]" />
       </figure>
-      <p className="absolute right-4 top-4 bg-black px-4 py-2 rounded-xl">
+      <p className="absolute right-4 top-4 bg-black px-4 py-2 rounded-xl text-white">
         ${price}
       </p>
       <div className="card-body items-center text-center">

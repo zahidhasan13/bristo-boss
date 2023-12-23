@@ -3,10 +3,14 @@ import useAuth from "../../hooks/useAuth";
 import { FaCalendar, FaPhoneAlt, FaShoppingCart } from "react-icons/fa";
 import usePayment from "../../hooks/usePayment";
 import { Link } from "react-router-dom";
+import useBooking from "../../hooks/useBooking";
+import useReview from "../../hooks/useReview";
 
 const UserHome = () => {
   const { user } = useAuth();
   const [payment] = usePayment();
+  const [review] = useReview();
+  const [booking] = useBooking();
   const pay = payment.reduce((sum, pay) => sum + pay.quantity, 0);
   return (
     <div className="md:mt-10 my-20 mx-5 md:mx-0">
@@ -41,7 +45,7 @@ const UserHome = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 my-10">
-        <div className="bg-[#FFEDD5] flex flex-col justify-center items-center py-20 md:border-r-2 border-[#D1A054] space-y-4 text-black font-semibold rounded-t md:rounded-t border-b-2">
+        <div className="bg-[#FFEDD5] flex flex-col justify-center items-center py-20 md:border-r-2 border-[#D1A054] space-y-4 text-black font-semibold rounded-t md:rounded-t border-b-2 md:border-b-0">
           <img
             src={user?.photoURL}
             alt="User"
@@ -50,7 +54,7 @@ const UserHome = () => {
           <p className="text-3xl">Name: {user?.displayName}</p>
           <p>Email: {user?.email}</p>
         </div>
-        <div className="bg-[#FEF9C3] px-20 py-20 text-black font-semibold rounded-b md:rounded-r md:border-l-2 md:border-[#D1A054] border-t-2 border-[#D1A054]">
+        <div className="bg-[#FEF9C3] px-20 py-20 text-black font-semibold rounded-b md:rounded-r md:border-l-2 md:border-[#D1A054] border-t-2 md:border-t-0">
           <h2 className="md:text-3xl text-xl uppercase mb-10">
             your activities
           </h2>
@@ -62,11 +66,11 @@ const UserHome = () => {
           </Link>
           <div className="text-[#00C4A1] flex items-center space-x-1">
             <FaStar></FaStar>
-            <span className="uppercase">review: 0</span>
+            <span className="uppercase">review: {review.length}</span>
           </div>
           <div className="text-[#FFBB28] flex items-center space-x-1">
             <FaCalendar></FaCalendar>
-            <span className="uppercase">bookibgs: 0</span>
+            <span className="uppercase">bookibgs: {booking.length}</span>
           </div>
           <Link to="/dashboard/paymenthistory">
             <div className="text-[#FF8042] flex items-center space-x-1">

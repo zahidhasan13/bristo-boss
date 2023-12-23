@@ -3,34 +3,51 @@ import Scroll from "../../components/Scroll";
 import SectionTitle from "../shared/SectionTitle";
 import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const UpdateItem = () => {
-  // const { id } = useParams();
-  // console.log("id", id);
+  const { id } = useParams();
+  const [singleItem, setSingleItem] = useState({});
+  console.log(id);
   const { register, handleSubmit } = useForm();
 
-  // const onSubmit = () => {
-  //   fetch(`http://localhost:5000/updateitem/${id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       status: "confirm",
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // if (data.modifiedCount > 0) {
-  //       //   // const remaining = cart.filter(ct => ct._id !== id);
-  //       //   // const confirmed = cart.find(ct => ct._id === id);
-  //       //   // confirmed.status = "confirm";
-  //       //   // const newCart = [...remaining, confirmed];
-  //       //   // setCart(newCart);
-  //       // }
-  //       console.log(data);
-  //     });
-  // };
+  useEffect(() => {
+    axios.get(`http://localhost:5000/singleItem/${id}`).then((data) => {
+      console.log(data);
+    });
+  }, [id]);
+
+  const onSubmit = (data) => {
+    const updateItem = {
+      name: data.name,
+      recipe: data.recipe,
+      category: data.category,
+      price: data.price,
+    };
+    console.log(updateItem);
+    fetch(`http://localhost:5000/updateitem/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        updateItem,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.matchedCount) {
+          Swal.fire({
+            icon: "success",
+            title: "Menu Updated Successfully",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
   return (
     <div>
       <Helmet>
@@ -41,7 +58,7 @@ const UpdateItem = () => {
         subHeading="---What's New?---"
         heading="UPDATE AN ITEM"
       ></SectionTitle>
-      <form onSubmit={handleSubmit()} className="space-y-4 my-10 px-10">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 my-10 px-10">
         <label className="form-control w-full">
           <div className="label">
             <span className="label-text font-semibold">Recipe Name*</span>
@@ -49,7 +66,8 @@ const UpdateItem = () => {
           <input
             type="text"
             placeholder="Raciepe Name"
-            {...register("name", { required: true, maxLength: 80 })}
+            defaultValue={singleItem.name}
+            {...register("name")}
             className="input input-bordered w-full"
           />
         </label>
@@ -59,7 +77,7 @@ const UpdateItem = () => {
               <span className="label-text font-semibold">Category*</span>
             </div>
             <select
-              {...register("category", { required: true })}
+              {...register("category")}
               className="select select-bordered"
               defaultValue={"DEFAULT"}
             >
@@ -80,7 +98,8 @@ const UpdateItem = () => {
             <input
               type="text"
               placeholder="Raciepe Name"
-              {...register("price", { required: true })}
+              defaultValue={singleItem.price}
+              {...register("price")}
               className="input input-bordered w-full"
             />
           </label>
@@ -90,9 +109,10 @@ const UpdateItem = () => {
             <span className="label-text">Recipe Details*</span>
           </div>
           <textarea
-            {...register("recipe", { required: true })}
+            {...register("recipe")}
             className="textarea textarea-bordered h-40"
             placeholder="Raciepe Details"
+            defaultValue={singleItem.details}
           ></textarea>
         </label>
         <button

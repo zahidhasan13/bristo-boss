@@ -2,9 +2,40 @@ import { Helmet } from "react-helmet-async";
 import useBooking from "../../hooks/useBooking";
 import Scroll from "../../components/Scroll";
 import SectionTitle from "../shared/SectionTitle";
+import Swal from "sweetalert2";
 
 const MyBooking = () => {
-  const [booking] = useBooking();
+  const [booking, refetch] = useBooking();
+
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/booking/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your item has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <Helmet>
@@ -29,6 +60,7 @@ const MyBooking = () => {
                   <th>Time</th>
                   <th>Guest</th>
                   <th>Email</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -38,6 +70,14 @@ const MyBooking = () => {
                     <td>{book.time}</td>
                     <td>{book.person}</td>
                     <td>{book.email}</td>
+                    <th>
+                      <button
+                        onClick={() => handleDelete(book)}
+                        className="btn btn-sm bg-red-700 text-white"
+                      >
+                        Cnacel
+                      </button>
+                    </th>
                   </tr>
                 ))}
               </tbody>

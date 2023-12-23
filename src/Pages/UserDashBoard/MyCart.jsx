@@ -55,7 +55,7 @@ const MyCart = () => {
           <h2 className="text-3xl">Total Price: ${totalPrice.toFixed(2)}</h2>
           <Link to="/dashboard/payment">
             <button
-              disabled={cart.length === 0}
+              disabled={cart.length <= 0}
               className="btn btn-sm bg-[#D1A054] text-black hover:text-white"
             >
               PAY
