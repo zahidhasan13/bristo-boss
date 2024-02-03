@@ -118,7 +118,7 @@ const AdminHome = () => {
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
       </div>
-      <div className="my-10 grid grid-cols-2 gap-10">
+      <div className="my-10 grid md:grid-cols-2 grid-cols-1 gap-10">
         <div>
           <BarChart
             width={500}

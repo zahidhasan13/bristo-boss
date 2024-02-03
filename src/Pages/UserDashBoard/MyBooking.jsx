@@ -47,29 +47,48 @@ const MyBooking = () => {
         heading="MY BOOKINGS"
       ></SectionTitle>
       <div>
-        <div className="flex justify-between items-center mb-10 mx-4">
+        <div className="flex justify-between items-center mb-10 lg:pl-16 lg:pr-4 px-4 xl:px-0">
           <h2 className="text-3xl">Total Booking: {booking.length}</h2>
         </div>
         <div>
-          <div className="overflow-x-auto">
-            <table className="table">
+          <div className="overflow-x-auto lg:pl-16 lg:pr-4 px-4 xl:px-0">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               {/* head */}
-              <thead>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Guest</th>
-                  <th>Email</th>
-                  <th>Action</th>
+                  <th scope="col" className="px-4 py-3">
+                    Date
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Time
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Guest
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {booking.map((book) => (
-                  <tr key={book._id}>
-                    <td>{book.date}</td>
-                    <td>{book.time}</td>
-                    <td>{book.person}</td>
-                    <td>{book.email}</td>
+                  <tr key={book._id} className="border-b dark:border-gray-700">
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {book.date}
+                    </th>
+                    <td className="px-4 py-3 whitespace-nowrap">{book.time}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {book.person}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {book.email}
+                    </td>
                     <th>
                       <button
                         onClick={() => handleDelete(book)}

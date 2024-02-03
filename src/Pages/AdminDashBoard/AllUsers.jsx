@@ -75,24 +75,39 @@ const AllUsers = () => {
         </div>
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               {/* head */}
-              <thead>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th></th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Action</th>
+                  <th scope="col" className="px-4 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Role
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((user, index) => (
                   <tr key={user._id}>
-                    <th>{index + 1}</th>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {index + 1}
+                    </th>
+                    <td className="px-4 py-3 whitespace-nowrap">{user.name}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {user.email}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
                       {user.role === "admin" ? (
                         "Admin"
                       ) : (
@@ -104,7 +119,7 @@ const AllUsers = () => {
                         </button>
                       )}
                     </td>
-                    <th>
+                    <th className="px-4 py-3 whitespace-nowrap">
                       <button
                         onClick={() => handleDelete(user)}
                         className="btn btn-sm bg-red-700 text-white"

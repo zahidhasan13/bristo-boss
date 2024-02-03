@@ -88,7 +88,7 @@ const CheckoutForm = ({ price, cart }) => {
             style: {
               base: {
                 fontSize: "16px",
-                color: "#ffffff",
+                color: "#000000",
                 "::placeholder": {
                   color: "#aab7c4",
                 },

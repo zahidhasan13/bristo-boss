@@ -13,10 +13,10 @@ const UserHome = () => {
   const [booking] = useBooking();
   const pay = payment.reduce((sum, pay) => sum + pay.quantity, 0);
   return (
-    <div className="md:mt-10 my-20 mx-5 md:mx-0">
-      <h2 className="text-3xl">Hi, Welcome Back!</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10">
-        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#BD38F6] to-[#ffffff] text-white font-bold rounded-lg py-5">
+    <div className="md:mt-10 my-20">
+      <h2 className="text-3xl lg:pl-16 pl-4 xl:pl-0">Hi, Welcome Back!</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 lg:pl-16 lg:pr-4 px-4 xl:pl-0">
+        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#BD38F6] to-[#e2e0e0] text-white font-bold rounded-lg py-5">
           <span className="text-3xl">
             <FaWallet></FaWallet>
           </span>
@@ -25,7 +25,7 @@ const UserHome = () => {
             <p className="font-normal">Menu</p>
           </div>
         </div>
-        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#D1A054] to-[#ffffff] text-white font-bold rounded-lg py-5">
+        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#D1A054] to-[#e2e0e0] text-white font-bold rounded-lg py-5">
           <span className="text-3xl">
             <FaHouseChimney></FaHouseChimney>
           </span>
@@ -34,7 +34,7 @@ const UserHome = () => {
             <p className="font-normal">Menu</p>
           </div>
         </div>
-        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#FE4E85] to-[#ffffff] text-white font-bold rounded-lg py-5">
+        <div className="flex justify-center items-center space-x-4 bg-gradient-to-r from-[#FE4E85] to-[#e2e0e0] text-white font-bold rounded-lg py-5">
           <span className="text-3xl">
             <FaPhoneAlt></FaPhoneAlt>
           </span>
@@ -44,8 +44,8 @@ const UserHome = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 my-10">
-        <div className="bg-[#FFEDD5] flex flex-col justify-center items-center py-20 md:border-r-2 border-[#D1A054] space-y-4 text-black font-semibold rounded-t md:rounded-t border-b-2 md:border-b-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 my-10 xl:pr-4">
+        <div className="bg-[#FFEDD5] flex flex-col justify-center items-center md:py-20 py-5 md:border-r-2 border-[#D1A054] space-y-4 text-black font-semibold rounded-t md:rounded-t border-b-2 md:border-b-0">
           <img
             src={user?.photoURL}
             alt="User"
@@ -54,8 +54,8 @@ const UserHome = () => {
           <p className="text-3xl">Name: {user?.displayName}</p>
           <p>Email: {user?.email}</p>
         </div>
-        <div className="bg-[#FEF9C3] px-20 py-20 text-black font-semibold rounded-b md:rounded-r md:border-l-2 md:border-[#D1A054] border-t-2 md:border-t-0">
-          <h2 className="md:text-3xl text-xl uppercase mb-10">
+        <div className="bg-[#FEF9C3] md:px-20 md:py-20 px-5 py-5 text-black font-semibold rounded-b md:rounded-r md:border-l-2 md:border-[#D1A054] border-t-2 md:border-t-0">
+          <h2 className="lg:text-3xl text-xl uppercase mb-10">
             your activities
           </h2>
           <Link to="/dashboard/paymenthistory">

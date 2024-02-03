@@ -47,11 +47,11 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 shadow-2xl py-2 px-20 items-center">
-        <div className="mr-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 shadow-2xl py-12 lg:px-20 items-center">
+        <div className="md:mr-10">
           <img src={loginImg} alt="" className="w-[500px]" />
         </div>
-        <div className="mx-20">
+        <div className="mx-5">
           <h3 className="text-4xl font-bold text-black mb-4 text-center">
             Login!
           </h3>

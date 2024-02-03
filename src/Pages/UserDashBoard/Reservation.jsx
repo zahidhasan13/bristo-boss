@@ -41,7 +41,7 @@ const Reservation = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid md:grid-cols-3 grid-cols-1 gap-5 my-2"
+        className="grid md:grid-cols-3 grid-cols-1 md:gap-5 my-2 md:mx-20 mx-5"
       >
         <label className="form-control w-full">
           <div className="label">
@@ -51,7 +51,7 @@ const Reservation = () => {
             type="date"
             placeholder="Raciepe Name"
             {...register("date", { required: true })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
         <label className="form-control w-full">
@@ -62,7 +62,7 @@ const Reservation = () => {
             type="time"
             placeholder="Raciepe Name"
             {...register("time", { required: true })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
         <label className="form-control w-full">
@@ -71,7 +71,7 @@ const Reservation = () => {
           </div>
           <select
             {...register("person", { required: true })}
-            className="select select-bordered"
+            className="select select-bordered m-0"
             defaultValue={"DEFAULT"}
           >
             <option value="DEFAULT" disabled>
@@ -93,7 +93,7 @@ const Reservation = () => {
             value={user?.displayName}
             placeholder="Raciepe Name"
             {...register("name", { required: true })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
         <label className="form-control w-full">
@@ -104,7 +104,7 @@ const Reservation = () => {
             type="text"
             placeholder="Raciepe Name"
             {...register("phone", { required: true })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
         <label className="form-control w-full">
@@ -116,14 +116,14 @@ const Reservation = () => {
             value={user?.email}
             placeholder="Raciepe Name"
             {...register("email", { required: true })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
         <div></div>
-        <div className="flex justify-center">
+        <div className="flex justify-center md:col-span-3">
           <button
             type="submit"
-            className="btn rounded-none text-white flex justify-center items-center bg-gradient-to-r from-[#855E23] to-[#B2802F] hover:from-[#B2802F] hover:to-[#855E23]"
+            className="btn rounded-none text-white flex justify-center items-center bg-gradient-to-r from-[#855E23] to-[#B2802F] hover:from-[#B2802F] hover:to-[#855E23] mt-5 md:mt-0"
           >
             <span>Add Items</span>
             <GiNotebook className="text-xl" />
@@ -135,7 +135,7 @@ const Reservation = () => {
         subHeading="---Visit Us---"
         heading="OUR LOCATION"
       ></SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10 lg:pl-16 lg:pr-4 px-4 xl:pl-0">
         <div className="text-center">
           <div className="bg-[#D1A054] text-white py-3 flex justify-center">
             <FaPhone></FaPhone>

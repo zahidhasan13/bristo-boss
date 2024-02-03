@@ -13,17 +13,23 @@ const Footer = () => {
           <p>Sat - Sun: 10:00 - 23:00</p>
         </div>
         <div className="bg-[#111827] py-20 text-center">
-            <h3 className="text-3xl uppercase mb-8">follow us</h3>
-            <p>Join us on social media</p>
-            <div className="flex items-center justify-center mt-4 space-x-6 text-xl">
-                <Link to=''><FaFacebookF></FaFacebookF></Link>
-                <Link to=''><FaInstagram></FaInstagram></Link>
-                <Link to=''><FaTwitter></FaTwitter></Link>
-            </div>
+          <h3 className="text-3xl uppercase mb-8">follow us</h3>
+          <p>Join us on social media</p>
+          <div className="flex items-center justify-center mt-4 space-x-6 text-xl">
+            <Link to="">
+              <FaFacebookF></FaFacebookF>
+            </Link>
+            <Link to="">
+              <FaInstagram></FaInstagram>
+            </Link>
+            <Link to="">
+              <FaTwitter></FaTwitter>
+            </Link>
+          </div>
         </div>
       </div>
-      <div className="bg-black py-4 text-center">
-        <p>Copyright © CulinaryCloud. All rights reserved.</p>
+      <div className="bg-black py-4 text-center px-2">
+        <p>Copyright © Zahid Hasan. All rights reserved.</p>
       </div>
     </div>
   );

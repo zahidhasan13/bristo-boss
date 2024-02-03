@@ -17,7 +17,7 @@ const Tesimonial = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto px-4">
       <SectionTitle
         subHeading={"---What Our Clients Say---"}
         heading={"TESTIMONIALS"}
@@ -25,17 +25,21 @@ const Tesimonial = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
-            <div className="mx-32 my-20 text-center">
+            <div className="md:mx-32 md:my-20 mx-5 mb-5 text-center">
               <div className="flex justify-center">
-              <Rating
-                style={{ maxWidth: 180 }}
-                value={review.rating}
-                readOnly
-              />
+                <Rating
+                  style={{ maxWidth: 180 }}
+                  value={review.rating}
+                  readOnly
+                />
               </div>
-              <p className="text-[100px] flex justify-center"><FaQuoteLeft></FaQuoteLeft></p>
-              <p>{review.details}</p>
-              <h3 className="text-2xl mt-4 text-orange-500">{review.name}</h3>
+              <p className="md:text-[100px] text-6xl flex justify-center">
+                <FaQuoteLeft></FaQuoteLeft>
+              </p>
+              <p className="text-sm md:text-lg">{review.details}</p>
+              <h3 className="md:text-2xl text-xl mt-4 text-orange-500">
+                {review.name}
+              </h3>
             </div>
           </SwiperSlide>
         ))}

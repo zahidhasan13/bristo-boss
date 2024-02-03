@@ -21,13 +21,13 @@ const Header = () => {
   };
   return (
     <header>
-      <nav className="md:bg-[rgba(0,0,0,0.3)] bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 md:fixed top-0 left-0 right-0 z-40">
+      <nav className="lg:bg-[rgba(0,0,0,0.3)] bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 lg:fixed top-0 left-0 right-0 z-40">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/">
-            <span className="text-3xl uppercase font-bold text-white">
+            <span className="md:text-3xl text-xl uppercase font-bold text-white">
               bistro boss
             </span>
-            <p className="text-xl uppercase tracking-[6px] font-medium text-white">
+            <p className="md:text-xl text-sm uppercase tracking-[6px] font-medium text-white">
               Restraurent
             </p>
           </Link>
@@ -94,7 +94,7 @@ const Header = () => {
                 </NavLink>
               </li>
               {!isAdmin && (
-                <li className="flex items-center">
+                <li className="flex items-center pt-3 lg:pt-0">
                   <NavLink
                     to="/dashboard/mycart"
                     className="text-xl text-white uppercase flex items-center relative"

@@ -9,7 +9,6 @@ import SectionTitle from "../shared/SectionTitle";
 
 const UpdateItem = () => {
   const router = useNavigate();
-  console.log(router);
   const { id } = useParams();
   const [singleItem, setSingleItem] = useState({});
   const { register, handleSubmit } = useForm();
@@ -23,7 +22,7 @@ const UpdateItem = () => {
   }, [id]);
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/menuitem/${id}`, {
+    fetch(`http://localhost:5000/updateitem/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,17 +66,17 @@ const UpdateItem = () => {
             placeholder="Raciepe Name"
             defaultValue={singleItem.name}
             {...register("name")}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text font-semibold">Category*</span>
             </div>
             <select
               {...register("category")}
-              className="select select-bordered"
+              className="select select-bordered m-0"
             >
               <option value="" disabled>
                 Category
@@ -114,7 +113,7 @@ const UpdateItem = () => {
               placeholder="Raciepe Name"
               defaultValue={singleItem.price}
               {...register("price")}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full m-0"
             />
           </label>
         </div>

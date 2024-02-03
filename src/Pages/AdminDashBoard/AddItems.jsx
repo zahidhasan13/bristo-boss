@@ -66,17 +66,17 @@ const AddItems = () => {
             type="text"
             placeholder="Raciepe Name"
             {...register("name", { required: true, maxLength: 80 })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full m-0"
           />
         </label>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-5">
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text font-semibold">Category*</span>
             </div>
             <select
               {...register("category", { required: true })}
-              className="select select-bordered"
+              className="select select-bordered m-0"
               defaultValue={"DEFAULT"}
             >
               <option value="DEFAULT" disabled>
@@ -98,7 +98,7 @@ const AddItems = () => {
               type="text"
               placeholder="Raciepe Name"
               {...register("price", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full m-0"
             />
           </label>
         </div>

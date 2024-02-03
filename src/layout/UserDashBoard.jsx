@@ -21,7 +21,7 @@ const UserDashBoard = () => {
         data-drawer-toggle="default-sidebar"
         aria-controls="default-sidebar"
         type="button"
-        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 absolute"
+        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 absolute"
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -42,7 +42,7 @@ const UserDashBoard = () => {
         <aside
           id="default-sidebar"
           className={`absolute top-0 left-0 z-40 ${
-            openMenu ? "block" : "hidden md:block"
+            openMenu ? "block" : "hidden lg:block"
           }`}
           aria-label="Sidenav"
         >
@@ -51,7 +51,7 @@ const UserDashBoard = () => {
           </div>
         </aside>
         <div className="lg:col-span-1"></div>
-        <div className="lg:col-span-4 justify-self-center w-full lg:mr-5">
+        <div className="lg:col-span-4 justify-self-center w-full">
           <Outlet></Outlet>
         </div>
       </div>

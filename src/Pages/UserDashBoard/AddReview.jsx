@@ -46,8 +46,8 @@ const AddReview = () => {
         subHeading="---Sharing is Caring---"
         heading="GIVE A REVIEW"
       ></SectionTitle>
-      <div className="bg-[#F3F3F3] md:mx-20 md:py-10">
-        <h2 className="text-3xl font-semibold text-center uppercase">
+      <div className="bg-[#F3F3F3] md:mx-20 md:py-10 py-5 mx-5 px-5 md:px-0">
+        <h2 className="md:text-3xl text-lg font-semibold text-center uppercase">
           rate us!
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="my-4 text-center">
@@ -65,12 +65,14 @@ const AddReview = () => {
               </option>
             ))}
           </select> */}
-          <Rating
-            style={{ maxWidth: 180 }}
-            value={rating}
-            // {...register("rating", { required: true })}
-            onChange={setRating}
-          />
+          <div className="flex justify-center">
+            <Rating
+              style={{ maxWidth: 180 }}
+              value={rating}
+              // {...register("rating", { required: true })}
+              onChange={setRating}
+            />
+          </div>
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text font-semibold">Name*</span>

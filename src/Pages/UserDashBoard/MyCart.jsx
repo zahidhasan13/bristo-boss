@@ -19,6 +19,13 @@ const MyCart = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
+      width: "auto",
+      padding: "1.25rem",
+      customClass: {
+        title: "text-xl", // Adjust title font size
+        content: "text-base", // Adjust content font size
+        actions: "flex justify-end", // Align buttons to the right
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/carts/${item._id}`, {
@@ -50,9 +57,13 @@ const MyCart = () => {
         heading="WANNA ADD MORE?"
       ></SectionTitle>
       <div>
-        <div className="flex justify-between items-center mb-10 mx-4">
-          <h2 className="text-3xl">Total Order: {cart.length}</h2>
-          <h2 className="text-3xl">Total Price: ${totalPrice.toFixed(2)}</h2>
+        <div className="md:flex md:justify-between md:items-center md:mb-10 mb-5 lg:pl-16 lg:pr-4 px-4  xl:pl-0">
+          <h2 className="md:text-3xl text-lg font-bold md:font-normal">
+            Total Order: {cart.length}
+          </h2>
+          <h2 className="md:text-3xl text-lg font-bold md:font-normal">
+            Total Price: ${totalPrice.toFixed(2)}
+          </h2>
           <Link to="/dashboard/payment">
             <button
               disabled={cart.length <= 0}
@@ -63,32 +74,50 @@ const MyCart = () => {
           </Link>
         </div>
         <div>
-          <div className="overflow-x-auto">
-            <table className="table">
+          <div className="overflow-x-auto lg:pl-16 lg:pr-4 px-4 xl:pl-0">
+            <table className="w-full text-sm text-left">
               {/* head */}
-              <thead>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                  <th>#</th>
-                  <th>Food</th>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Action</th>
+                  <th scope="col" className="px-4 py-3">
+                    #
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Food
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Title
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Price
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {cart.map((item, index) => (
-                  <tr key={item._id}>
-                    <th>{index + 1}</th>
-                    <td>
+                  <tr key={item._id} className="border-b">
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {index + 1}
+                    </th>
+                    <td className="px-4 py-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img src={item.image} alt={item.name} />
                         </div>
                       </div>
                     </td>
-                    <td>{item.name}</td>
-                    <td>${item.price}</td>
-                    <th>
+                    <td className="px-4 py-3">{item.name}</td>
+                    <td className="px-4 py-3">${item.price}</td>
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
                       <button
                         onClick={() => handleDelete(item)}
                         className="btn btn-sm bg-red-700 text-white"

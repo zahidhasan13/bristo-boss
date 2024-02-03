@@ -1,7 +1,6 @@
 .login,
 .signup {
   background-image: url(../../assets/others/authentication.png);
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

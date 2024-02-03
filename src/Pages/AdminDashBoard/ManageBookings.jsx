@@ -27,29 +27,52 @@ const ManageBookings = () => {
         </div>
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               {/* head */}
-              <thead>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th></th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Guest</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Phone</th>
+                  <th scope="col" className="px-4 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Guest
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Date
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Time
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Phone
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {bookings.map((user, index) => (
-                  <tr key={user._id}>
-                    <th>{index + 1}</th>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.person}</td>
-                    <td>{user.date}</td>
-                    <td>{user.time}</td>
-                    <td>{user.phone}</td>
+                  <tr key={user._id} className="border-b dark:border-gray-700">
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {index + 1}
+                    </th>
+                    <td className="px-4 py-3 whitespace-nowrap">{user.name}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {user.email}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {user.person}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">{user.date}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{user.time}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {user.phone}
+                    </td>
                   </tr>
                 ))}
               </tbody>

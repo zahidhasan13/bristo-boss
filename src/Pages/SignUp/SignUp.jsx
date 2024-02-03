@@ -48,8 +48,8 @@ const SignUp = () => {
   };
   return (
     <div className="signup">
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 shadow-2xl py-12 px-20 items-center">
-        <div className="mx-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-10 shadow-2xl py-12 md:px-20 items-center">
+        <div className="order-2 mx-5">
           <h3 className="text-4xl font-bold text-black text-center">Sign Up</h3>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full my-5">
             <div>
@@ -155,7 +155,7 @@ const SignUp = () => {
             <SocialLogin></SocialLogin>
           </div>
         </div>
-        <div className="mr-10">
+        <div className="md:mr-10 order-1">
           <img src={loginImg} alt="" className="w-[500px]" />
         </div>
       </div>

@@ -21,8 +21,8 @@ const ContactUs = () => {
         subHeading="---Visit Us---"
         heading="OUR LOCATION"
       ></SectionTitle>
-      <div className="max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-5 md:mx-0">
           <div className="text-center">
             <div className="bg-[#D1A054] text-white py-3 flex justify-center">
               <FaPhone></FaPhone>
@@ -41,7 +41,7 @@ const ContactUs = () => {
             <div className="border-b border-l border-r pb-4 h-36">
               <div className="bg-[#F3F3F3] text-black pt-4 pb-8 mx-4 h-32">
                 <h2 className="text-xl uppercase">address</h2>
-                <p>London, UK</p>
+                <p>Dhaka, Bangladesh</p>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ const ContactUs = () => {
           subHeading="---Sent Us a Message---"
           heading="CONTACT FORM"
         ></SectionTitle>
-        <form className="bg-gray-300 py-10 px-5">
+        <form className="bg-gray-300 md:py-10 md:px-5 py-5 px-3 md:my-0 md:mb-10 mb-5 mx-5 md:mx-auto">
           <div className="md:grid md:grid-cols-2 grid-cols-1 md:gap-10">
             <label className="form-control w-full">
               <div className="label">

@@ -33,12 +33,12 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="px-4 pt-10">
+    <div className="px-4 lg:pt-10">
       <Link to="/">
-        <span className="text-3xl uppercase font-bold text-black">
+        <span className="lg:text-3xl text-xl uppercase font-bold text-black">
           bistro boss
         </span>
-        <p className="text-xl uppercase tracking-[6px] font-medium text-black">
+        <p className="lg:text-xl text-sm uppercase tracking-[6px] font-medium text-black">
           Restraurent
         </p>
       </Link>
@@ -113,15 +113,15 @@ const Sidebar = () => {
           </ul>
         </div>
       ) : (
-        <div className="mt-20">
+        <div className="lg:mt-20 mt-10">
           <ul className="flex flex-col space-y-4">
             <li>
               <NavLink
                 to="/dashboard/userhome"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <FaHouse></FaHouse>
@@ -133,8 +133,8 @@ const Sidebar = () => {
                 to="/dashboard/reservation"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <FaCalendar></FaCalendar>
@@ -146,8 +146,8 @@ const Sidebar = () => {
                 to="/dashboard/paymenthistory"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <FaWallet></FaWallet>
@@ -159,8 +159,8 @@ const Sidebar = () => {
                 to="/dashboard/mycart"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <FaCartShopping></FaCartShopping>
@@ -172,8 +172,8 @@ const Sidebar = () => {
                 to="/dashboard/addreview"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <MdReviews />
@@ -185,8 +185,8 @@ const Sidebar = () => {
                 to="/dashboard/mybooking"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-xl text-white uppercase flex items-center space-x-2"
-                    : "text-xl text-black uppercase flex items-center space-x-2"
+                    ? "lg:text-xl text-sm text-white uppercase flex items-center space-x-2"
+                    : "lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
                 }
               >
                 <FaCalendarDay />
@@ -202,7 +202,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/"
-              className="text-xl text-black uppercase flex items-center space-x-2"
+              className="lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
             >
               <FaHouse></FaHouse>
               <span>home</span>
@@ -211,7 +211,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/menu"
-              className="text-xl text-black uppercase flex items-center space-x-2"
+              className="lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
             >
               <FaBars></FaBars>
               <span>menu</span>
@@ -220,7 +220,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/order/salad"
-              className="text-xl text-black uppercase flex items-center space-x-2"
+              className="lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
             >
               <FaBagShopping></FaBagShopping>
               <span>shop</span>
@@ -229,7 +229,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/contact"
-              className="text-xl text-black uppercase flex items-center space-x-2"
+              className="lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
             >
               <FaPhone></FaPhone>
               <span>contact</span>
@@ -238,7 +238,7 @@ const Sidebar = () => {
           <li>
             <button
               onClick={handleLogOut}
-              className="text-xl text-black uppercase flex items-center space-x-2"
+              className="lg:text-xl text-sm text-black uppercase flex items-center space-x-2"
             >
               <FaSignOutAlt></FaSignOutAlt>
               <span>Log out</span>

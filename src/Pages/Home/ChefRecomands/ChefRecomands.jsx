@@ -14,13 +14,13 @@ const ChefRecomands = () => {
       });
   }, []);
   return (
-    <section className="max-w-screen-xl mx-auto mb-8">
+    <section className="max-w-screen-xl mx-auto mb-8 px-4">
       <SectionTitle
         subHeading="---Should Try---"
         heading="CHEF RECOMMENDS"
       ></SectionTitle>
 
-      <div className="grid md:grid-cols-3 grid-cols-1 md:gap-4 my-8 mx-4 md:mx-0">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-4 my-8">
         {chefRec.slice(3, 6).map((item) => (
           <FoodCard key={item._id} item={item}></FoodCard>
         ))}
