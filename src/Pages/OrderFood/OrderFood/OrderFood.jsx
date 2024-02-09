@@ -26,6 +26,7 @@ const OrderFood = () => {
       <Helmet>
         <title>Bistro Boss | Order Food</title>
       </Helmet>
+      {/* Scroll component */}
       <Scroll />
       <Cover
         img={orderBG}
