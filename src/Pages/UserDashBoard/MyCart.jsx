@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Scroll from "../../components/Scroll";
 import useCart from "../../hooks/useCart";
 import SectionTitle from "../shared/SectionTitle";
-import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -28,9 +28,12 @@ const MyCart = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://bistro-boss-server-puce-phi.vercel.app/carts/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

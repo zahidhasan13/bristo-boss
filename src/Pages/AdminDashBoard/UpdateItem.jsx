@@ -14,7 +14,7 @@ const UpdateItem = () => {
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/menu/${id}`)
+    fetch(`https://bistro-boss-server-puce-phi.vercel.app/menu/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setSingleItem(data);
@@ -22,7 +22,7 @@ const UpdateItem = () => {
   }, [id]);
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/updateitem/${id}`, {
+    fetch(`https://bistro-boss-server-puce-phi.vercel.app/updateitem/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

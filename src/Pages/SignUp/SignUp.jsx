@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
-import loginImg from "../../assets/others/authentication2.png";
-import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import loginImg from "../../assets/others/authentication2.png";
 import SocialLogin from "../../components/SocialLogin";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -23,7 +23,7 @@ const SignUp = () => {
       updateUserProfile(data.name)
         .then(() => {
           const savedUser = { name: data.name, email: data.email };
-          fetch("http://localhost:5000/users", {
+          fetch("https://bistro-boss-server-puce-phi.vercel.app/users", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

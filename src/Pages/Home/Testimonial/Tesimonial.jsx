@@ -1,18 +1,18 @@
-import SectionTitle from "../../shared/SectionTitle";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import { useEffect, useState } from "react";
+import { FaQuoteLeft } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
-import { Rating } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
-import { FaQuoteLeft } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SectionTitle from "../../shared/SectionTitle";
 
 const Tesimonial = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://bistro-boss-server-puce-phi.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://bistro-boss-server-puce-phi.vercel.app/jwt", {
             id: currentUser.uid,
             email: currentUser.email,
           })

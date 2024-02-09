@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import useBooking from "../../hooks/useBooking";
-import Scroll from "../../components/Scroll";
-import SectionTitle from "../shared/SectionTitle";
 import Swal from "sweetalert2";
+import Scroll from "../../components/Scroll";
+import useBooking from "../../hooks/useBooking";
+import SectionTitle from "../shared/SectionTitle";
 
 const MyBooking = () => {
   const [booking, refetch] = useBooking();
@@ -18,9 +18,12 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${item._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://bistro-boss-server-puce-phi.vercel.app/booking/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

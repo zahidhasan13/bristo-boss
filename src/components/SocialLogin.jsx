@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa6";
-import { AuthContext } from "../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const SocialLogin = () => {
   const { logInWithGoogle } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const SocialLogin = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://bistro-boss-server-puce-phi.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
